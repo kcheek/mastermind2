@@ -19,29 +19,29 @@ class Display
   end
 
   def input_command_prompt
-    @stdout.puts "please input a command:"
+    @stdout.print "please input a command:"
   end
 
-  def gam_play_instructions
+  def game_play_instructions
     @stdout.puts"Guess the four color secret sequence.
     You can input 'r' for red, 'b' for blue, 'g' for green, and 'y' for yellow.
     You can use any sequence and any number of each colors up to four."
   end
 
   def input_guess_prompt
-    @stdout.puts "please input a guess: rrrr"
+    @stdout.print "please input a guess:"
   end
 
-  def correct_color
-    @stdout.puts "You have 1 color correct."
+  def correct_color(number)
+    @stdout.puts "You have #{number} color correct."
   end
 
-  def correct_position
-    @stdout.puts "You have 2 in the correct spot."
+  def correct_position(number)
+    @stdout.puts "You have #{number} in the correct spot."
   end
 
-  def number_of_guesses
-    @stdout.puts "You have made 1 guess."
+  def number_of_guesses(turn)
+    @stdout.puts "You have made #{turn} guesses."
   end
 
   def too_many_characters
@@ -49,20 +49,20 @@ class Display
   end
 
   def too_few_characters
-    @stdout.puts
+    @stdout.puts "FIXME :D"
   end
 
   def invalid_input
-    @stdout.puts
+    @stdout.puts "FIXME :D"
   end
 
-  def winner
+  def winner(turn)
     @stdout.puts "You've won!  Congratulations!
-    It took you 3 guesses to complete the game."
+    It took you #{fixme :D} guesses to complete the game."
   end
 
   def end_game_prompt
-    @stdout.puts "Do you want to play again or quit? quit"
+    @stdout.print "Do you want to play again or quit?"
   end
 
   def goodbye_message

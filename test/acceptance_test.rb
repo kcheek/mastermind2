@@ -1,34 +1,7 @@
-gem 'minitest'
-require 'minitest/autorun'
-require 'minitest/pride'
-require '../lib/cli'
+require_relative 'test_helper'
 
 class AcceptanceTest < Minitest::Test
-  class FakeStdin
-    def initialize(*inputs)
-      @inputs = inputs         # => ["a\n", "b\n"]
-      @index = 0               # => 0
-    end
-
-    def gets
-      input = @inputs[@index]  # => "a\n", "b\n", nil
-      @index += 1              # => 1, 2, 3
-      input                    # => "a\n", "b\n", nil
-    end
-  end
-
-  class FakeStdout
-
-    def printed
-      @printed || @printed = []  # => [], [], ["a"], ["a"], ["a", "b"]
-    end
-
-    def puts(message)
-      printed << message         # => ["a"], ["a", "b"]
-    end
-
-  end
-
+  
   def test_acceptance
     stdin  = FakeStdin.new("p\n", "rrrr\n", "rrggg\n", "rrgg\n", "rrgb\n", "quit\n")
     stdout = FakeStdout.new
