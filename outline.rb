@@ -1,13 +1,3 @@
-Do I need integration tests?
-What would they look like for Mastermind?
-
-
-
-
-display
-  welcome message
-  instructions
-
 
 game flow
   print welcome message
