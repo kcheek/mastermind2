@@ -58,6 +58,10 @@ class Display
     It took you #{turn} guesses to complete the game."
   end
 
+  def time(minutes_time, seconds_time)
+    "It took you #{minutes_time} minutes and #{seconds_time} seconds to complete your game."
+  end
+
   def end_game_prompt
     "Do you want to play again or quit?"
   end
@@ -66,4 +70,9 @@ class Display
     "Goodbye, and have a lovely day!"
   end
 
+  def guess_stats(guess_stats)
+    "You guessed #{guess_stats.guessed_colors}.
+    You have #{guess_stats.correct_color_incorrect_spot} correct elements
+    with #{guess_stats.correct_spot_and_color} in the correct position."
+  end
 end
