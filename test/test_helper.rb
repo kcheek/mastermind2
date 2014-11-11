@@ -4,6 +4,8 @@ require 'minitest/pride'
 require '../lib/display'
 require '../lib/cli'
 require '../lib/input'
+require '../lib/guess_stats'
+require '../lib/game'
 
 class FakeStdin
 
