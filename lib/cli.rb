@@ -1,42 +1,54 @@
 class CLI
+  attr_reader :instream, :outstream, :secret_code, :user_guess, :display
 
   def initialize(instream, outstream, secret_code = nil)
     @instream = instream
     @outstream = outstream
     @secret_code = secret_code
+    @display = Display.new
+    @user_guess = ""
   end
 
   def call
-
+    outstream.puts display.welcome_message
+    outstream.puts display.welcome_instructions
+    # display welcome_message
+    # display welcome_instructions
+    until input.quit?
+      outstream.puts display.input_command_prompt
+      user_guess = Input.new(instream.gets.chomp.downcase)
+      if input.play?
+        game.play
+      elsif input.instructions?
+        outstream.puts display.instructions
+      elsif input.quit?
+        outstream.puts display.goodbye_message
+      else
+        outstream.puts display.invalid_input
+      end
+    # display input_command_prompt
+    # get input, downcase it and chomp it
+    # check if input is play
+      # go to game file game loop game = Game.new(instream, outstream).play
+    # check if input is instructions
+      # display instructions
+    # check if input is quit
+      # display goodbye_message
+    # otherwise print invalid_input
+    end
   end
+
 end
 
-# start_sequence
-#   print welcome message
-#   print option to play, to look at instructions, to quit
-#   if they choose play, print what colors they can choose and that they have the option to quit
-#     at any time
-#   ask for their guess
-#   downcase guess
-#   check if player wants to play
-#   call game class play method
-#   if player wants instructions
-#   print instructions
-#   if player wants to quit
-#   print endgame message
-#   otherwise print invalid input
-
-
-
-# method to evaluate the guess
-#     call method from input to check guess against random sequence
-#     call method from input to check weather input is too long/short
-#     give back approprate feedback(number of correct elements and position)
-#   end_game_sequence
-#     method for a correct guess
-#     print win message
-#     print time
-#     print sequence they guessed
-#     give the option to play again or quit
-#     print how many guesses it took
-#
+#- start_sequence
+#-   print welcome message
+#-   print option to play, to look at instructions, to quit
+#-   ask for their guess
+#-   downcase guess
+#-   check if player wants to play
+#-   call game class play method
+#-   if player wants instructions
+#-   print instructions
+#-   if player wants to quit
+#-   print endgame message
+#-   otherwise print invalid input
