@@ -1,8 +1,8 @@
 class CLI
 
-  def initialize(stdin, stdout, secret_code = nil)
-    @stdin = stdin
-    @stdout = stdout
+  def initialize(instream, outstream, secret_code = nil)
+    @instream = instream
+    @outstream = outstream
     @secret_code = secret_code
   end
 
@@ -11,7 +11,7 @@ class CLI
   end
 end
 
-    # start_sequence
+# start_sequence
 #   print welcome message
 #   print option to play, to look at instructions, to quit
 #   if they choose play, print what colors they can choose and that they have the option to quit
