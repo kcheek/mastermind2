@@ -20,14 +20,25 @@ class Game
       outstream.print display.input_guess_prompt
       @input = Input.new(instream.gets.strip.downcase)
       if input.quit?
-        outstream.print display.goodbye_message
+        outstream.puts display.goodbye_message
         break
       elsif input.improper_input_length?
-        outstream.print invalid_input
+        outstream.puts display.invalid_input
       elsif input.invalid_input?
-        outstream.print invalid_input
+        outstream.puts display.invalid_input
       elsif win?
-        
+        turn indicator
+        total_time
+        outstream.puts display.time(minutes_time, seconds_time)
+        outstream.puts display.guess_stats(guess_stats)
+        outstream.print display.end_game_prompt
+        break
+      else
+        turn_indicator
+        outstream.puts display.guess_stats(guess_stats)
+      end
+    end
+  end
       # print turn_indicator
       # print input_guess_prompt
       # get input input = Input.new(instream.gets.chomp.downcase)
@@ -46,13 +57,22 @@ class Game
         # print turn
         # print guess_stats
         # display end game prompt
-        break
       # otherwise
         # increment turn
         # check correct_spot_and_color
         # check correct_color
         # display guess stats(NEED TO ADD TO DISPLAY CLASS)
-    end
+
+  def total_time
+    @total_time = (Time.now - @start_time).to_i
+  end
+
+  def minutes_time
+    @minutes_time = total_time / 60
+  end
+
+  def seconds_time
+    @seconds_time = total_time % 60
   end
 
   def win?
@@ -61,6 +81,10 @@ class Game
 
   def turn_indicator
     @turn_indicator += 1
+  end
+
+  def guess_stats
+    @guess_stats = GuessStats.new(secret_sequence, input.input)
   end
 
 end
