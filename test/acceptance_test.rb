@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 
 class AcceptanceTest < Minitest::Test
-  
+
   def test_acceptance
     stdin  = FakeStdin.new("p\n", "rrrr\n", "rrggg\n", "rrgg\n", "rrgb\n", "quit\n")
     stdout = FakeStdout.new
@@ -13,7 +13,7 @@ class AcceptanceTest < Minitest::Test
     assert_includes stdout.printed, "Welcome to Mastermind!"
 
     # informs user of their options
-    assert_includes stdout.printed, "type 'p'or 'play' to play,"
+    assert_includes stdout.printed, "type 'p' or 'play' to play,"
 
     # prompts for a command (p)
     assert_includes stdout.printed, "please input a command: "
