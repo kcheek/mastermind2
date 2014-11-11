@@ -1,57 +1,69 @@
+# outstream.puts display.welcome_message
 class Game
-  attr_reader :stdin, :display, :secret_sequence, :colors, :turn_indicator  # => nil
+  attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time
 
-  def initialize(stdin, display)
-    @stdin = stdin                                   # => ["r", "r", "b", "b"]
-    @display = display                               # => nil
-    @turn_indicator = 0                              # => 0
-    @colors = ['r','g','b','y']                      # => ["r", "g", "b", "y"]
-    @secret_sequence = (0..3).map { colors.sample }  # => ["r", "b", "b", "y"]
+  def initialize(instream, outstream)
+    @instream = instream
+    @outstream = outstream
+    @display = Display.new
+    @turn_indicator = 0
+    @colors = ['r','g','b','y']
+    @secret_sequence = (0..3).map { colors.sample }
+    @start_time = Time.new
   end
 
   def play
-                                   # => 2
+    outstream.print display.game_play_instructions
+    # print game_play_instructions
+    loop do
+      @turn_indicator
+      outstream.print display.input_guess_prompt
+      @input = Input.new(instream.gets.strip.downcase)
+      if input.quit?
+        outstream.print display.goodbye_message
+        break
+      elsif input.improper_input_length?
+        outstream.print invalid_input
+      elsif input.invalid_input?
+        outstream.print invalid_input
+      elsif win?
+        
+      # print turn_indicator
+      # print input_guess_prompt
+      # get input input = Input.new(instream.gets.chomp.downcase)
+      # check to see if input is quit
+        # print goodbye_message
+
+      # check to see if input is too long/too short
+        # print too long/too short message
+      # check to see if input is invalid characters
+        # print invalid characters message
+      # check to see if input is a winner
+        # increment turn
+        # call time
+        # print winner
+        # print time
+        # print turn
+        # print guess_stats
+        # display end game prompt
+        break
+      # otherwise
+        # increment turn
+        # check correct_spot_and_color
+        # check correct_color
+        # display guess stats(NEED TO ADD TO DISPLAY CLASS)
+    end
+  end
+
+  def win?
+    secret_sequence == @input
   end
 
   def turn_indicator
-    @turn_indicator
+    @turn_indicator += 1
   end
 
 end
 
-game = Game.new(['r','r','b','b'], display)  # => #<Game:0x007fd363805a00 @stdin=["r", "r", "b", "b"], @display=nil, @turn_indicator=0, @colors=["r", "g", "b", "y"], @secret_sequence=["r", "b", "b", "y"]>
-game.play                                    # => 2
-
-# game loop
-# randomly generate secret_code
-
-# display game intro
-# display turn indicator
-# display prompt for input
-# get input
-# check to see if input is quit
-  # if display quit message
-# check to see if input is too long/short
-  # if display is invalid print message
-# check to see if wrong characters were inputted
-  # if wrong characters inputted print message
-# check to see if they won
-  # if they won increment turn
-  # print win message
-  # print number of turns taken
-  # print time?
-# if none of the above take turn
-  # increment turn
-  # print guess stats
-
-# check if won
-# increment turn
-# call on guess stats class
-
-
-# and ask if they want to play again or quit
-# tell user if it's the correct color
-# tell user if it's the correct position
-# let user guess again
-
-# >> main
+# game = Game.new(['r','r','b','b'], display)
+# game.play
