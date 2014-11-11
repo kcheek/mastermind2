@@ -3,102 +3,93 @@ require_relative 'test_helper'
 class DisplayTest < Minitest::Test
 
   def test_it_prints_welcome_message
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.welcome_message, "Welcome to Mastermind!"
+    display = Display.new
+    message = display.welcome_message
+    assert message.include?("Mastermind!")
   end
 
   def test_it_prints_welcome_instructions
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.welcome_instructions, "type 'p'or 'play' to play,
-    'i' or 'instructions' for instructions,
-    'q'or 'quit' to quit"
+    display = Display.new
+    message = display.welcome_instructions
+    assert message.include?("type 'p' or 'play' to play")
   end
 
   def test_it_prints_instructions
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.instructions, "FIXME :D"
+    display = Display.new
+    message = display.instructions
+    assert message.include?("FIXME :D")
   end
 
   def test_it_prints_input_command_prompt
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.input_command_prompt, "please input a command:"
+    display = Display.new
+    message = display.input_command_prompt
+    assert message.include?("input a command:")
   end
 
   def test_it_prints_game_play_instructions
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.game_play_instructions, "Guess the four color secret sequence.
-    You can input 'r' for red, 'b' for blue, 'g' for green, and 'y' for yellow.
-    You can use any sequence and any number of each colors up to four."
-  end
+    display = Display.new
+    message = display.game_play_instructions
+    assert message.include?("Guess the four color secret")
+    end
 
   def test_it_prints_input_guess_prompt
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.input_guess_prompt, "please input a guess:"
+    display = Display.new
+    message = display.input_guess_prompt
+    assert message.include?("input a guess:")
   end
 
   def test_it_prints_correct_color
-    skip
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.correct_color(2), "You have #{number} color correct."
+    display = Display.new
+    message = display.correct_color(2)
+    assert message.include?("You have 2 color correct.")
   end
 
   def test_it_prints_correct_position
-    skip
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.correct_position(2), "You have #{number} in the correct spot."
+    display = Display.new
+    message = display.correct_position(2)
+    assert message.include?("You have 2 in the correct spot.")
   end
 
   def test_it_prints_number_of_guesses
-    skip
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.number_of_guesses(1), "You have made #{turn} guesses."
+    display = Display.new
+    message = display.number_of_guesses(1)
+    assert message.include?("You have made 1 guesses.")
   end
 
   def test_it_prints_too_many_characters
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.too_many_characters, "You have entered too many characters."
+    display = Display.new
+    message = display.too_many_characters
+    assert message.include?("too many characters")
   end
 
   def test_it_prints_too_few_characters
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.too_few_characters, "FIXME :D"
+    display = Display.new
+    message = display.too_few_characters
+    assert message.include?("FIXME :D")
   end
 
   def test_it_prints_invalid_input
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.invalid_input, "FIXME :D"
+    display = Display.new
+    message = display.invalid_input
+    assert message.include?("FIXME :D")
   end
 
   def test_it_prints_winner
-    skip
-    stdout = FakeStdout.new
-    display = Display.new(stdout)
-    assert_includes display.winner(guesses), "You've won!  Congratulations!
-    It took you #{fixme :D} guesses to complete the game."
+    display = Display.new
+    message = display.winner(8)
+    assert message.include?("You've won!")
   end
 
   def test_it_prints_end_game_prompt
-      stdout = FakeStdout.new
-      display = Display.new(stdout)
-      assert_includes display.end_game_prompt, "Do you want to play again or quit?"
+      display = Display.new
+      message = display.end_game_prompt
+      assert message.include?("Do you want to play again")
   end
 
   def test_it_prints_goodbye_message
-      stdout = FakeStdout.new
-      display = Display.new(stdout)
-      assert_includes display.goodbye_message, "Goodbye, and have a lovely day!"
+      display = Display.new
+      message = display.goodbye_message
+      assert message.include?("Goodbye, and have a lovely day!")
   end
 
 end
