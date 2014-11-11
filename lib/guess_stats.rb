@@ -5,7 +5,6 @@ class GuessStats
   def initialize(secret_sequence, guessed_colors)
     @secret_sequence = secret_sequence
     @guessed_colors = guessed_colors
-    @correct_count = 0
     @index = 0
   end
 
@@ -19,6 +18,7 @@ class GuessStats
   end
 
   def correct_color
+    @correct_count = 0
     secret_sequence_duplicate = @secret_sequence.dup
     guessed_colors.each_char do |letter|
       @correct_count += 1 if secret_sequence_duplicate.include?(letter)
@@ -29,7 +29,7 @@ class GuessStats
 end
 
 #
-# stats = GuessStats.new('bbrg', 'bbbb')
+# stats = GuessStats.new('bbrg', 'bbrb')
 # stats.correct_color
 # stats.correct_spot_and_color
 #  check input against randomly generated sequence
