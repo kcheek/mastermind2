@@ -1,4 +1,3 @@
-# outstream.puts display.welcome_message
 class Game
   attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time, :input
 
@@ -15,7 +14,7 @@ class Game
   def play
     outstream.print display.game_play_instructions
     loop do
-      turn_indicator
+      outstream.puts display.number_of_guesses(@turn_indicator)
       outstream.print display.input_guess_prompt
       @input = Input.new(instream.gets.strip.downcase, secret_sequence)
       if input.quit?
@@ -28,12 +27,12 @@ class Game
       elsif input.win?
         increment_turn
         total_time
+        outstream.puts display.winner(@turn_indicator)
         outstream.puts display.time(minutes_time, seconds_time)
-        outstream.puts display.guess_stats(guess_stats)
         outstream.print display.end_game_prompt
         break
       else
-        turn_indicator
+        increment_turn
         outstream.puts display.guess_stats(guess_stats)
       end
     end
