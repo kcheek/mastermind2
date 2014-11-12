@@ -34,4 +34,8 @@ class FakeStdout
   def print(message)
     printed << message
   end
+
+  def array_include?(printed, message)
+    printed.any? {| word | word.include?(message) }
+  end
 end

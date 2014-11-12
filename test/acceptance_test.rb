@@ -10,13 +10,13 @@ class AcceptanceTest < Minitest::Test
     # > ruby mastermind.rb
     cli.call
     # greets user
-    assert_includes stdout.printed, "Welcome to Mastermind!"
+    assert stdout.array_include?(stdout.printed, "Welcome to Mastermind!")
 
     # informs user of their options
-    assert_includes stdout.printed, "type 'p' or 'play' to play,"
+    assert stdout.array_include?(stdout.printed, "type 'p' or 'play' to play")
 
     # prompts for a command (p)
-    assert_includes stdout.printed, "please input a command: "
+    assert stdout.array_include?(stdout.printed, "please input a command:")
 
     # prompts for color
     assert_includes stdout.printed, "Guess the four color secret sequence."
