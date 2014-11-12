@@ -32,7 +32,7 @@ class AcceptanceTest < Minitest::Test
     assert stdout.array_include?(stdout.printed, "You have made 1 guesses")
 
     # identifies the incorrect guess (rrggg)
-    assert stdout.array_include?(stdout.printed, "FIXME :D")
+    assert stdout.array_include?(stdout.printed, "invalid")
 
     # takes another guess
     assert stdout.array_include?(stdout.printed, "You have made 2 guesses.")

@@ -1,4 +1,3 @@
-#  DONE
 class GuessStats
   attr_reader :secret_code, :guessed_colors
 

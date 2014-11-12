@@ -17,7 +17,7 @@ class DisplayTest < Minitest::Test
   def test_it_prints_instructions
     display = Display.new
     message = display.instructions
-    assert message.include?("FIXME :D")
+    assert message.include?("instructions")
   end
 
   def test_it_prints_input_command_prompt
@@ -65,13 +65,13 @@ class DisplayTest < Minitest::Test
   def test_it_prints_too_few_characters
     display = Display.new
     message = display.too_few_characters
-    assert message.include?("FIXME :D")
+    assert message.include?("too few characters")
   end
 
   def test_it_prints_invalid_input
     display = Display.new
     message = display.invalid_input
-    assert message.include?("FIXME :D")
+    assert message.include?("invalid")
   end
 
   def test_it_prints_winner
