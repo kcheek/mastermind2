@@ -15,13 +15,6 @@ class CorrectSpotTest < Minitest::Test
     assert_correct_spot "bbbg", "gggb", 0
     assert_correct_spot "bbbb", "bbbb", 4
   end
-
-  def test_it_does_not_accept_invalid_letters
-    skip
-    assert_correct_spot "bbbb", "bbbx", 0
-    assert_correct_spot "bbbb", "xxxx", 0
-  end
-
 end
 
 class CorrectColorTest < Minitest::Test
