@@ -35,12 +35,3 @@ class Input
   end
 
 end
-
-# identify if guess is invalid
-
-# accept input and differentiate between command-
-# identify if guess is too short-
-# identify if guess is too long-
-# identify if guess is quit?-
-# identify if guess is instructions?-
-# identify if guess is play?-

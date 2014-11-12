@@ -12,11 +12,10 @@ class CLI
   def call
     outstream.puts display.welcome_message
     outstream.puts display.welcome_instructions
-    # display welcome_message
-    # display welcome_instructions
     until quit?
-      outstream.puts display.input_command_prompt
+      outstream.print display.input_command_prompt
       @user_guess = instream.gets.strip.downcase
+
       if play?
         Game.new(instream, outstream).play
       elsif instructions?
@@ -26,15 +25,6 @@ class CLI
       else
         outstream.puts display.invalid_input
       end
-    # display input_command_prompt
-    # get input, downcase it and chomp it
-    # check if input is play
-      # go to game file game loop game = Game.new(instream, outstream).play
-    # check if input is instructions
-      # display instructions
-    # check if input is quit
-      # display goodbye_message
-    # otherwise print invalid_input
     end
   end
 
@@ -51,16 +41,3 @@ class CLI
   end
 
 end
-
-#- start_sequence
-#-   print welcome message
-#-   print option to play, to look at instructions, to quit
-#-   ask for their guess
-#-   downcase guess
-#-   check if player wants to play
-#-   call game class play method
-#-   if player wants instructions
-#-   print instructions
-#-   if player wants to quit
-#-   print endgame message
-#-   otherwise print invalid input

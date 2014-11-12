@@ -72,7 +72,7 @@ class Display
 
   def guess_stats(guess_stats)
     "You guessed #{guess_stats.guessed_colors}.
-    You have #{guess_stats.correct_color} correct elements
-    with #{guess_stats.correct_spot_and_color} in the correct position."
+    You have #{guess_stats.correct_color} correct colors
+    with #{guess_stats.correct_spot_and_color} in the correct spot."
   end
 end

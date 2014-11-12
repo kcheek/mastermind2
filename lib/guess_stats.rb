@@ -27,11 +27,3 @@ class GuessStats
     @correct_count
   end
 end
-
-#
-# stats = GuessStats.new('bbrg', 'bbrb')
-# stats.correct_color
-# stats.correct_spot_and_color
-#  check input against randomly generated sequence
-#  how many are the correct color
-#  how many are in the correct spot and color
