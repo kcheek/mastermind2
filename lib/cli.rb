@@ -15,9 +15,8 @@ class CLI
     until quit?
       outstream.print display.input_command_prompt
       @user_guess = instream.gets.strip.downcase
-
       if play?
-        Game.new(instream, outstream).play
+        Game.new(instream, outstream, secret_code).play
       elsif instructions?
         outstream.puts display.instructions
       elsif quit?

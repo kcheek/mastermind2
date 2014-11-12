@@ -2,13 +2,13 @@
 class Game
   attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time, :input
 
-  def initialize(instream, outstream)
+  def initialize(instream, outstream, secret_sequence)
     @instream = instream
     @outstream = outstream
     @display = Display.new
     @turn_indicator = 0
     @colors = ['r','g','b','y']
-    @secret_sequence = (0..3).map { colors.sample }.to_s
+    @secret_sequence = secret_sequence || (0..3).map { colors.sample }.join
     @start_time = Time.new
   end
 
@@ -17,7 +17,7 @@ class Game
     loop do
       turn_indicator
       outstream.print display.input_guess_prompt
-      @input = Input.new(instream.gets.strip.downcase)
+      @input = Input.new(instream.gets.strip.downcase, secret_sequence)
       if input.quit?
         outstream.puts display.goodbye_message
         break
@@ -25,7 +25,7 @@ class Game
         outstream.puts display.invalid_input
       elsif input.invalid_input?
         outstream.puts display.invalid_input
-      elsif win?
+      elsif input.win?
         increment_turn
         total_time
         outstream.puts display.time(minutes_time, seconds_time)
@@ -50,11 +50,6 @@ class Game
   def seconds_time
     @seconds_time = total_time % 60
   end
-
-  def win?
-    secret_sequence == @input
-  end
-
   def increment_turn
     @turn_indicator += 1
   end
@@ -64,4 +59,3 @@ class Game
   end
 
 end
-  
