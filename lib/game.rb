@@ -1,6 +1,6 @@
 # outstream.puts display.welcome_message
 class Game
-  attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time
+  attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time, :input
 
   def initialize(instream, outstream)
     @instream = instream
@@ -16,7 +16,7 @@ class Game
     outstream.print display.game_play_instructions
     # print game_play_instructions
     loop do
-      @turn_indicator
+      turn_indicator
       outstream.print display.input_guess_prompt
       @input = Input.new(instream.gets.strip.downcase)
       if input.quit?
@@ -27,7 +27,7 @@ class Game
       elsif input.invalid_input?
         outstream.puts display.invalid_input
       elsif win?
-        turn indicator
+        increment_turn
         total_time
         outstream.puts display.time(minutes_time, seconds_time)
         outstream.puts display.guess_stats(guess_stats)
@@ -39,6 +39,32 @@ class Game
       end
     end
   end
+
+  def total_time
+    @total_time = (Time.now - @start_time).to_i
+  end
+
+  def minutes_time
+    @minutes_time = total_time / 60
+  end
+
+  def seconds_time
+    @seconds_time = total_time % 60
+  end
+
+  def win?
+    secret_sequence == @input
+  end
+
+  def increment_turn
+    @turn_indicator += 1
+  end
+
+  def guess_stats
+    @guess_stats = GuessStats.new(secret_sequence, input.input)
+  end
+
+end
       # print turn_indicator
       # print input_guess_prompt
       # get input input = Input.new(instream.gets.chomp.downcase)
@@ -62,32 +88,6 @@ class Game
         # check correct_spot_and_color
         # check correct_color
         # display guess stats(NEED TO ADD TO DISPLAY CLASS)
-
-  def total_time
-    @total_time = (Time.now - @start_time).to_i
-  end
-
-  def minutes_time
-    @minutes_time = total_time / 60
-  end
-
-  def seconds_time
-    @seconds_time = total_time % 60
-  end
-
-  def win?
-    secret_sequence == @input
-  end
-
-  def turn_indicator
-    @turn_indicator += 1
-  end
-
-  def guess_stats
-    @guess_stats = GuessStats.new(secret_sequence, input.input)
-  end
-
-end
 
 # game = Game.new(['r','r','b','b'], display)
 # game.play
