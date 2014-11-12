@@ -14,14 +14,14 @@ class CLI
     outstream.puts display.welcome_instructions
     # display welcome_message
     # display welcome_instructions
-    until input.quit?
+    until quit?
       outstream.puts display.input_command_prompt
-      user_guess = Input.new(instream.gets.chomp.downcase)
-      if input.play?
-        game.play
-      elsif input.instructions?
+      @user_guess = instream.gets.strip.downcase
+      if play?
+        Game.new(instream, outstream).play
+      elsif instructions?
         outstream.puts display.instructions
-      elsif input.quit?
+      elsif quit?
         outstream.puts display.goodbye_message
       else
         outstream.puts display.invalid_input
@@ -36,6 +36,18 @@ class CLI
       # display goodbye_message
     # otherwise print invalid_input
     end
+  end
+
+  def quit?
+    @user_guess == 'q' || @user_guess == 'quit'
+  end
+
+  def instructions?
+    @user_guess == 'i' || @user_guess == 'instructions'
+  end
+
+  def play?
+    @user_guess == 'p' || @user_guess == 'play'
   end
 
 end
