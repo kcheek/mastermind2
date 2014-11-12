@@ -1,3 +1,4 @@
+# DONE
 class Input
   attr_reader :input
 
@@ -22,7 +23,7 @@ class Input
   end
 
   def improper_input_length?
-    input_too_long || input_too_short
+    input_too_long? || input_too_short?
   end
 
   def input_too_long?
@@ -32,6 +33,7 @@ class Input
   def input_too_short?
     input.length < 4
   end
+
 end
 
 # identify if guess is invalid
