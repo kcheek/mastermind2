@@ -26,7 +26,7 @@ class Game
       @input = Input.new(instream.gets.strip.downcase, secret_sequence)
       if input.quit?
         outstream.puts display.goodbye_message
-        break
+        exit
       elsif input.improper_input_length?
         outstream.puts display.invalid_input
       elsif input.invalid_input?
