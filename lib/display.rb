@@ -35,7 +35,7 @@ class Display
   end
 
   def number_of_guesses(turn)
-    "You have made #{turn} guesses."
+    "\nYou have made #{turn} guesses."
   end
 
   def invalid_input
@@ -63,7 +63,7 @@ class Display
 
   def guess_stats(guess_stats)
     "You guessed #{guess_stats.guessed_colors}.
-    You have #{guess_stats.correct_color} correct colors
+    \nYou have #{guess_stats.correct_color} correct colors
     with #{guess_stats.correct_spot_and_color} in the correct spot."
   end
 end

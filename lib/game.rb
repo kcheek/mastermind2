@@ -25,17 +25,21 @@ class Game
       elsif input.invalid_input?
         outstream.puts display.invalid_input
       elsif input.win?
-        increment_turn
-        total_time
-        outstream.puts display.winner(@turn_indicator)
-        outstream.puts display.time(minutes_time, seconds_time)
-        outstream.print display.end_game_prompt
+        win_sequence
         break
       else
         increment_turn
         outstream.puts display.guess_stats(guess_stats)
       end
     end
+  end
+
+  def win_sequence
+    increment_turn
+    total_time
+    outstream.puts display.winner(@turn_indicator)
+    outstream.puts display.time(minutes_time, seconds_time)
+    outstream.print display.end_game_prompt
   end
 
   def total_time
