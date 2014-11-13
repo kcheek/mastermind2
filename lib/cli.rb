@@ -1,3 +1,5 @@
+require 'io/console'
+
 class CLI
   attr_reader :instream,
               :outstream,
@@ -52,7 +54,7 @@ class CLI
 
   def get_the_secret_sequence
     outstream.puts "Congratulations, you've found an easter egg! Input your secret sequence."
-    @secret_sequence = instream.gets.strip.downcase
+    @secret_sequence = instream.noecho { instream.gets.strip.downcase } 
   end
 
 end

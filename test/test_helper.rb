@@ -19,6 +19,11 @@ class FakeStdin
     @index += 1
     input
   end
+
+  def noecho
+    yield
+  end
+  
 end
 
 class FakeStdout
