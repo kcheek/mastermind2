@@ -49,12 +49,12 @@ class CLI
   end
 
   def input_secret_sequence?
-    @user_guess == "iss"
+    @user_guess == "ss"
   end
 
   def get_the_secret_sequence
-    outstream.puts "Congratulations, you've found an easter egg! Input your secret sequence."
-    @secret_sequence = instream.noecho { instream.gets.strip.downcase } 
+    outstream.puts "Congratulations, you've found an easter egg! You can input your own secret sequence now!"
+    @secret_sequence = instream.noecho { instream.gets.strip.downcase }
   end
 
 end
