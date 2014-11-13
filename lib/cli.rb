@@ -1,12 +1,16 @@
 class CLI
-  attr_reader :instream, :outstream, :secret_sequence, :user_guess, :display
+  attr_reader :instream,
+              :outstream,
+              :secret_sequence,
+              :user_guess,
+              :display
 
   def initialize(instream, outstream, secret_sequence = nil)
-    @instream = instream
-    @outstream = outstream
+    @instream        = instream
+    @outstream       = outstream
     @secret_sequence = secret_sequence
-    @display = Display.new
-    @user_guess = ""
+    @display         = Display.new
+    @user_guess      = ""
   end
 
   def call

@@ -1,10 +1,11 @@
 class GuessStats
-  attr_reader :secret_code, :guessed_colors
+  attr_reader :secret_code,
+              :guessed_colors
 
   def initialize(secret_sequence, guessed_colors)
     @secret_sequence = secret_sequence
-    @guessed_colors = guessed_colors
-    @index = 0
+    @guessed_colors  = guessed_colors
+    @index           = 0
   end
 
   def correct_spot_and_color

@@ -1,14 +1,21 @@
 class Game
-  attr_reader :instream, :outstream, :display, :secret_sequence, :colors, :turn_indicator, :time, :input
+  attr_reader :instream,
+              :outstream,
+              :display,
+              :secret_sequence,
+              :colors,
+              :turn_indicator,
+              :time,
+              :input
 
   def initialize(instream, outstream, secret_sequence)
-    @instream = instream
-    @outstream = outstream
-    @display = Display.new
-    @turn_indicator = 0
-    @colors = ['r','g','b','y']
+    @instream        = instream
+    @outstream       = outstream
+    @display         = Display.new
+    @turn_indicator  = 0
+    @colors          = ['r','g','b','y']
     @secret_sequence = secret_sequence || (0..3).map { colors.sample }.join
-    @start_time = Time.new
+    @start_time      = Time.new
   end
 
   def play

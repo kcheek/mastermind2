@@ -1,9 +1,9 @@
-# DONE
 class Input
-  attr_reader :input, :secret_sequence
+  attr_reader :input,
+              :secret_sequence
 
   def initialize(input, secret_sequence)
-    @input = input
+    @input           = input
     @secret_sequence = secret_sequence
   end
 
