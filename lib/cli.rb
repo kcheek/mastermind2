@@ -1,10 +1,10 @@
 class CLI
-  attr_reader :instream, :outstream, :secret_code, :user_guess, :display
+  attr_reader :instream, :outstream, :secret_sequence, :user_guess, :display
 
-  def initialize(instream, outstream, secret_code = nil)
+  def initialize(instream, outstream, secret_sequence = nil)
     @instream = instream
     @outstream = outstream
-    @secret_code = secret_code
+    @secret_sequence = secret_sequence
     @display = Display.new
     @user_guess = ""
   end
@@ -16,7 +16,7 @@ class CLI
       outstream.print display.input_command_prompt
       @user_guess = instream.gets.strip.downcase
       if play?
-        Game.new(instream, outstream, secret_code).play
+        Game.new(instream, outstream, secret_sequence).play
       elsif instructions?
         outstream.puts display.instructions
       elsif quit?

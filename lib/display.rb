@@ -34,24 +34,8 @@ class Display
     "\nplease input a guess:"
   end
 
-  def correct_color(number)
-    "You have #{number} color correct."
-  end
-
-  def correct_position(number)
-    "You have #{number} in the correct spot."
-  end
-
   def number_of_guesses(turn)
     "You have made #{turn} guesses."
-  end
-
-  def too_many_characters
-    "You have entered too many characters."
-  end
-
-  def too_few_characters
-    "You have entered too few characters."
   end
 
   def invalid_input

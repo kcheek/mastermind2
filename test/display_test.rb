@@ -37,35 +37,11 @@ class DisplayTest < Minitest::Test
     message = display.input_guess_prompt
     assert message.include?("input a guess:")
   end
-
-  def test_it_prints_correct_color
-    display = Display.new
-    message = display.correct_color(2)
-    assert message.include?("You have 2 color correct.")
-  end
-
-  def test_it_prints_correct_position
-    display = Display.new
-    message = display.correct_position(2)
-    assert message.include?("You have 2 in the correct spot.")
-  end
-
+  
   def test_it_prints_number_of_guesses
     display = Display.new
     message = display.number_of_guesses(1)
     assert message.include?("You have made 1 guesses.")
-  end
-
-  def test_it_prints_too_many_characters
-    display = Display.new
-    message = display.too_many_characters
-    assert message.include?("too many characters")
-  end
-
-  def test_it_prints_too_few_characters
-    display = Display.new
-    message = display.too_few_characters
-    assert message.include?("too few characters")
   end
 
   def test_it_prints_invalid_input
