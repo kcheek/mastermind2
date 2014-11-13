@@ -27,9 +27,11 @@ class CLI
 
   def input_commands
     case
-    when play?         then Game.new(instream, outstream, secret_sequence).play
-    when instructions? then outstream.puts display.instructions
-    when quit?         then outstream.puts display.goodbye_message
+    when play?                  then
+      Game.new(instream, outstream, secret_sequence).play
+      @secret_sequence = nil
+    when instructions?          then outstream.puts display.instructions
+    when quit?                  then outstream.puts display.goodbye_message
     when input_secret_sequence? then get_the_secret_sequence
     else
       outstream.puts display.invalid_input
